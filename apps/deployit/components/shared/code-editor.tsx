@@ -88,3 +88,98 @@ const dockerComposeServicesOption =[
 	},
 }));
 
+function dockerComposeComplete(
+    context: CompletionContext,
+): CompletionResult | null {
+    const word  = context.matchBefore(/\w*/);
+
+    if(!word) return null;
+    if(!word.text && !context.explicit) return null
+
+    const line  = context.state.doc.lineAt(context.pos)
+
+    const indentation =  /^\s*/.exec(line.text)?.[0].length || 0
+
+    if(indentation === 0) {
+        return {
+            from: word.from,
+           options: dockerComposeServices,
+          validFor: /^\w*$/,
+        }
+    }
+
+    if(indentation === 4) {
+        return {
+            from: word.from,
+            options:dockerComposeServicesOption,
+            validFor: /^\w*$/,
+        }
+    }
+
+    return null
+}
+
+
+interface Props extends ReactCodeMirrorProps {
+    wrapperClassNmae?: string
+    disabled?: boolean;
+    language?: "yaml" | "json" | "properties" | "shell"
+    lineWrapping?: boolean
+    lineNumbers?: boolean
+}
+
+export const CodeEditor = ({
+    className,
+    wrapperClassNmae,
+    language= "yaml",
+    lineNumbers = true,
+    ...props
+}: Props) => {
+    const {resolvedTheme} = useTheme()
+
+    return (
+        <div className={cn(" relative overflow-auto", wrapperClassNmae)}>
+
+<CodeMirror 
+basicSetup={{
+    lineNumbers,
+    foldGutter: true,
+    highlightSelectionMatches: true,
+    highlightActiveLine: !props.disabled,
+    allowMultipleSelections: true,
+}}
+ 
+theme={resolvedTheme === "dark" ? githubDark: githubLight}
+
+extensions={[
+    language === "yaml"
+    ? yaml()
+    : language === "json"
+        ? json()
+        : language === "shell"
+            ? StreamLanguage.define(shell)
+            : StreamLanguage.define(properties),
+props.lineWrapping ? EditorView.lineWrapping : [],
+language === "yaml"
+    ? autocompletion({
+            override: [dockerComposeComplete],
+        })
+    : [],
+
+]}
+{...props}
+editable={!props.disabled}
+				className={cn(
+					"w-full h-full text-sm leading-relaxed",
+					`cm-theme-${resolvedTheme}`,
+					className,
+				)}
+
+/>
+
+{props.disabled && (
+    <div className=" absolute top-0 rounded-md left-0 w-full h-full flex items-center justify-center z-[10] [background:var(--overlay)] "/>
+)}
+        </div>
+    )
+}
