@@ -13,6 +13,11 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "micromatch": "^4.0.8"
+    "@types/node": "^20",
+    "bcrypt": "^5.1.1",
+    "dockerode": "^4.0.5",
+    "drizzle-orm": "^0.41.0",
+    "micromatch": "^4.0.8",
+    "postgres": "^3.4.5"
   }
 }
