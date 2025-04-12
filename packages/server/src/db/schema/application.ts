@@ -196,7 +196,7 @@ export const applications = pgTable("application", {
 	modeSwarm: json("modeSwarm").$type<ServiceModeSwarm>(),
 	labelsSwarm: json("labelsSwarm").$type<LabelsSwarm>(),
 	networkSwarm: json("networkSwarm").$type<NetworkSwarm[]>(),
-	
+	//
 	replicas: integer("replicas").default(1).notNull(),
 	applicationStatus: applicationStatus("applicationStatus")
 		.notNull()

@@ -193,7 +193,8 @@ export const apiUpdateCompose = createSchema
 export const apiRandomizeCompose = createSchema
 	.pick({
 		composeId: true,
-	}).extend({
+	})
+	.extend({
 		suffix: z.string().optional(),
 		composeId: z.string().min(1),
 	});
