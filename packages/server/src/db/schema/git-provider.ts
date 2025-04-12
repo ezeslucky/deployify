@@ -9,27 +9,30 @@ import { gitea } from "./gitea";
 import { github } from "./github";
 import { gitlab } from "./gitlab";
 
-
 export const gitProviderType = pgEnum("gitProviderType", [
-    "github",
-    "gitlab",
-    "bitbucket",
-    "gitea"
-])
+	"github",
+	"gitlab",
+	"bitbucket",
+	"gitea",
+]);
 
 export const gitProvider = pgTable("git_provider", {
-    gitProviderId: text("gitProviderId").notNull().primaryKey().$defaultFn(() => nanoid()),
-    name: text("name").notNull(),
-    providerType: gitProviderType("providerType").notNull().default("github"),
-    createdAt: text("createdAt").notNull().$defaultFn(() => new Date().toISOString()),
-    organizationId: text("organizationId").notNull().references(()=> organization.id, {
-        onDelete: "cascade"
-    })
+	gitProviderId: text("gitProviderId")
+		.notNull()
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	name: text("name").notNull(),
+	providerType: gitProviderType("providerType").notNull().default("github"),
+	createdAt: text("createdAt")
+		.notNull()
+		.$defaultFn(() => new Date().toISOString()),
+	organizationId: text("organizationId")
+		.notNull()
+		.references(() => organization.id, { onDelete: "cascade" }),
+});
 
-})
-
-export const gitProviderRelations = relations(gitProvider, ({one}) => ({
-    github: one(github, {
+export const gitProviderRelations = relations(gitProvider, ({ one }) => ({
+	github: one(github, {
 		fields: [gitProvider.gitProviderId],
 		references: [github.gitProviderId],
 	}),
@@ -49,12 +52,12 @@ export const gitProviderRelations = relations(gitProvider, ({one}) => ({
 		fields: [gitProvider.organizationId],
 		references: [organization.id],
 	}),
+}));
 
-}))
+const createSchema = createInsertSchema(gitProvider);
 
-const createSchema = createInsertSchema(gitProvider)
-
-
-export const apiRemoveGitProvider = createSchema.extend({
-    gitProviderId: z.string().min(1),
-}).pick({gitProviderId: true})
+export const apiRemoveGitProvider = createSchema
+	.extend({
+		gitProviderId: z.string().min(1),
+	})
+	.pick({ gitProviderId: true });
