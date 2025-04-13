@@ -9,7 +9,16 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^18.19.86",
+    "dotenv": "16.4.5",
+    "esbuild": "0.20.2",
+    "lefthook": "^1.11.9",
+    "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
+    "tsx": "4.16.2",
     "turbo": "^2.5.0",
     "typescript": "5.8.2"
   },
