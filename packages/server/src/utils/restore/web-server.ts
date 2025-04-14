@@ -1,7 +1,7 @@
-import type { Destination } from "@dokploy/server/services/destination";
+import type { Destination } from "../services/destination";
 import { getS3Credentials } from "../backups/utils";
 import { execAsync } from "../process/execAsync";
-import { paths, IS_CLOUD } from "@dokploy/server/constants";
+import { paths, IS_CLOUD } from "../constants";
 import { mkdtemp } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";

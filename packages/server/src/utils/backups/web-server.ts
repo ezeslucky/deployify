@@ -1,8 +1,8 @@
-import type { BackupSchedule } from "@dokploy/server/services/backup";
+import type { BackupSchedule } from "../services/backup";
 import { execAsync } from "../process/execAsync";
 import { getS3Credentials, normalizeS3Path } from "./utils";
-import { findDestinationById } from "@dokploy/server/services/destination";
-import { IS_CLOUD, paths } from "@dokploy/server/constants";
+import { findDestinationById } from "../services/destination";
+import { IS_CLOUD, paths } from "../constants";
 import { mkdtemp } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";

@@ -1,14 +1,14 @@
-import { db } from "@dokploy/server/db";
-import { type apiCreateRedis, redis } from "@dokploy/server/db/schema";
-import { buildAppName } from "@dokploy/server/db/schema";
-import { generatePassword } from "@dokploy/server/templates";
-import { buildRedis } from "@dokploy/server/utils/databases/redis";
-import { pullImage } from "@dokploy/server/utils/docker/utils";
+import { db } from "../db";
+import { type apiCreateRedis, redis } from "../db/schema";
+import { buildAppName } from "../db/schema";
+import { generatePassword } from "../templates";
+import { buildRedis } from "../utils/databases/redis";
+import { pullImage } from "../utils/docker/utils";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { validUniqueServerAppName } from "./project";
 
-import { execAsyncRemote } from "@dokploy/server/utils/process/execAsync";
+import { execAsyncRemote } from "../utils/process/execAsync";
 
 export type Redis = typeof redis.$inferSelect;
 

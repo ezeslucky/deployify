@@ -1,5 +1,5 @@
-import type { Destination } from "@dokploy/server/services/destination";
-import type { Mongo } from "@dokploy/server/services/mongo";
+import type { Destination } from "../services/destination";
+import type { Mongo } from "../services/mongo";
 import { getS3Credentials } from "../backups/utils";
 import {
 	getRemoteServiceContainer,

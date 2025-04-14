@@ -1,6 +1,6 @@
-import type { BackupSchedule } from "@dokploy/server/services/backup";
-import type { Mariadb } from "@dokploy/server/services/mariadb";
-import { findProjectById } from "@dokploy/server/services/project";
+import type { BackupSchedule } from "../services/backup";
+import type { Mariadb } from "../services/mariadb";
+import { findProjectById } from "../services/project";
 import {
 	getRemoteServiceContainer,
 	getServiceContainer,

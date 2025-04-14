@@ -1,10 +1,10 @@
-import { db } from "@dokploy/server/db";
+import { db } from "../db";
 import {
 	invitation,
 	member,
 	organization,
 	users_temp,
-} from "@dokploy/server/db/schema";
+} from "../db/schema";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { IS_CLOUD } from "../constants";
@@ -12,9 +12,9 @@ import { IS_CLOUD } from "../constants";
 export const findUserById = async (userId: string) => {
 	const user = await db.query.users_temp.findFirst({
 		where: eq(users_temp.id, userId),
-		// with: {
-		// 	account: true,
-		// },
+		with: {
+			account: true,
+		},
 	});
 	if (!user) {
 		throw new TRPCError({

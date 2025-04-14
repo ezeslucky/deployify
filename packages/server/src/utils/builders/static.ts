@@ -2,7 +2,7 @@ import type { WriteStream } from "node:fs";
 import {
 	buildCustomDocker,
 	getDockerCommand,
-} from "@dokploy/server/utils/builders/docker-file";
+} from "../utils/builders/docker-file";
 import type { ApplicationNested } from ".";
 import { createFile, getCreateFileCommand } from "../docker/utils";
 import { getBuildAppDirectory } from "../filesystem/directory";

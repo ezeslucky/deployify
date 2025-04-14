@@ -1,44 +1,44 @@
-import { docker } from "@dokploy/server/constants";
-import { db } from "@dokploy/server/db";
+import { docker } from "../constants";
+import { db } from "../db";
 import {
 	type apiCreateApplication,
 	applications,
 	buildAppName,
-} from "@dokploy/server/db/schema";
-import { getAdvancedStats } from "@dokploy/server/monitoring/utils";
+} from "../db/schema";
+import { getAdvancedStats } from "../monitoring/utils";
 import {
 	buildApplication,
 	getBuildCommand,
 	mechanizeDockerContainer,
-} from "@dokploy/server/utils/builders";
-import { sendBuildErrorNotifications } from "@dokploy/server/utils/notifications/build-error";
-import { sendBuildSuccessNotifications } from "@dokploy/server/utils/notifications/build-success";
-import { execAsyncRemote } from "@dokploy/server/utils/process/execAsync";
+} from "../utils/builders";
+import { sendBuildErrorNotifications } from "../utils/notifications/build-error";
+import { sendBuildSuccessNotifications } from "../utils/notifications/build-success";
+import { execAsyncRemote } from "../utils/process/execAsync";
 import {
 	cloneBitbucketRepository,
 	getBitbucketCloneCommand,
-} from "@dokploy/server/utils/providers/bitbucket";
+} from "../utils/providers/bitbucket";
 import {
 	buildDocker,
 	buildRemoteDocker,
-} from "@dokploy/server/utils/providers/docker";
+} from "../utils/providers/docker";
 import {
 	cloneGitRepository,
 	getCustomGitCloneCommand,
-} from "@dokploy/server/utils/providers/git";
+} from "../utils/providers/git";
 import {
 	cloneGiteaRepository,
 	getGiteaCloneCommand,
-} from "@dokploy/server/utils/providers/gitea";
+} from "../utils/providers/gitea";
 import {
 	cloneGithubRepository,
 	getGithubCloneCommand,
-} from "@dokploy/server/utils/providers/github";
+} from "../utils/providers/github";
 import {
 	cloneGitlabRepository,
 	getGitlabCloneCommand,
-} from "@dokploy/server/utils/providers/gitlab";
-import { createTraefikConfig } from "@dokploy/server/utils/traefik/application";
+} from "../utils/providers/gitlab";
+import { createTraefikConfig } from "../utils/traefik/application";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { encodeBase64 } from "../utils/docker/utils";
@@ -152,7 +152,7 @@ export const updateApplication = async (
 
 	return application[0];
 };
-
+ 
 export const updateApplicationStatus = async (
 	applicationId: string,
 	applicationStatus: Application["applicationStatus"],
@@ -665,3 +665,5 @@ export const getApplicationStats = async (appName: string) => {
 
 	return data;
 };
+export { updatePreviewDeployment };
+

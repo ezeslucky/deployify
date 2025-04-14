@@ -1,9 +1,9 @@
-import { db } from "@dokploy/server/db";
+import { db } from "../db";
 import {
 	type apiCreateServer,
 	organization,
 	server,
-} from "@dokploy/server/db/schema";
+} from "../db/schema";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 
