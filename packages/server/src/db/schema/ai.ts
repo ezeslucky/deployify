@@ -16,7 +16,7 @@ export const ai = pgTable("ai", {
 	isEnabled: boolean("isEnabled").notNull().default(true),
 	organizationId: text("organizationId")
 		.notNull()
-		.references(() => organization.id, { onDelete: "cascade" }), // Admin ID who created the AI settings
+		.references(() => organization.id, { onDelete: "cascade" }), 
 	createdAt: text("createdAt")
 		.notNull()
 		.$defaultFn(() => new Date().toISOString()),
