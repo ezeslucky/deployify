@@ -4,7 +4,7 @@ import type {
 	gotify,
 	slack,
 	telegram,
-} from "@dokploy/server/db/schema";
+} from "../db/schema";
 import nodemailer from "nodemailer";
 
 export const sendEmailNotification = async (

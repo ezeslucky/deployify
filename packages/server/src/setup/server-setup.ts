@@ -1,10 +1,10 @@
 import path from "node:path";
-import { paths } from "@dokploy/server/constants";
+import { paths } from "../constants";
 import {
 	createServerDeployment,
 	updateDeploymentStatus,
-} from "@dokploy/server/services/deployment";
-import { findServerById } from "@dokploy/server/services/server";
+} from "../services/deployment";
+import { findServerById } from "../services/server";
 import {
 	TRAEFIK_HTTP3_PORT,
 	TRAEFIK_PORT,
@@ -12,7 +12,7 @@ import {
 	TRAEFIK_VERSION,
 	getDefaultMiddlewares,
 	getDefaultServerTraefikConfig,
-} from "@dokploy/server/setup/traefik-setup";
+} from "../setup/traefik-setup";
 import { Client } from "ssh2";
 import { recreateDirectory } from "../utils/filesystem/directory";
 

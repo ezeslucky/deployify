@@ -1,7 +1,7 @@
 import {
 	execAsync,
 	execAsyncRemote,
-} from "@dokploy/server/utils/process/execAsync";
+} from "../utils/process/execAsync";
 
 export const getContainers = async (serverId?: string | null) => {
 	try {

@@ -1,10 +1,10 @@
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
-import { docker } from "@dokploy/server/constants";
+import { docker } from "../constants";
 import {
 	execAsync,
 	execAsyncRemote,
-} from "@dokploy/server/utils/process/execAsync";
+} from "../utils/process/execAsync";
 
 export interface IUpdateData {
 	latestVersion: string | null;

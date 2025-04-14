@@ -1,6 +1,6 @@
 import { createWriteStream } from "node:fs";
 import { join } from "node:path";
-import type { InferResultType } from "@dokploy/server/types/with";
+import type { InferResultType } from "../types/with";
 import type { CreateServiceOptions } from "dockerode";
 import { uploadImage, uploadImageRemoteCommand } from "../cluster/upload";
 import {

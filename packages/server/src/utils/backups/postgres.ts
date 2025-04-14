@@ -1,6 +1,6 @@
-import type { BackupSchedule } from "@dokploy/server/services/backup";
-import type { Postgres } from "@dokploy/server/services/postgres";
-import { findProjectById } from "@dokploy/server/services/project";
+import type { BackupSchedule } from "../services/backup";
+import type { Postgres } from "../services/postgres";
+import { findProjectById } from "../services/project";
 import {
 	getRemoteServiceContainer,
 	getServiceContainer,
