@@ -16,14 +16,14 @@ export const runWebServerBackup = async (backup: BackupSchedule) => {
 		const rcloneFlags = getS3Credentials(destination);
 		const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
 		const { BASE_PATH } = paths();
-		const tempDir = await mkdtemp(join(tmpdir(), "dokploy-backup-"));
+		const tempDir = await mkdtemp(join(tmpdir(), "deployit-backup-"));
 		const backupFileName = `webserver-backup-${timestamp}.zip`;
 		const s3Path = `:s3:${destination.bucket}/${normalizeS3Path(backup.prefix)}${backupFileName}`;
 
 		try {
 			await execAsync(`mkdir -p ${tempDir}/filesystem`);
 
-			const postgresCommand = `docker exec $(docker ps --filter "name=dokploy-postgres" -q) pg_dump -v -Fc -U dokploy -d dokploy > ${tempDir}/database.sql`;
+			const postgresCommand = `docker exec $(docker ps --filter "name=deployit-postgres" -q) pg_dump -v -Fc -U deployit -d deployit > ${tempDir}/database.sql`;
 			await execAsync(postgresCommand);
 
 			await execAsync(`cp -r ${BASE_PATH}/* ${tempDir}/filesystem/`);
