@@ -1,11 +1,11 @@
-import type { BackupSchedule } from "../services/backup";
+
 import { execAsync } from "../process/execAsync";
 import { getS3Credentials, normalizeS3Path } from "./utils";
-import { findDestinationById } from "../services/destination";
-import { IS_CLOUD, paths } from "../constants";
+
 import { mkdtemp } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { BackupSchedule, findDestinationById, IS_CLOUD, paths } from "server";
 
 export const runWebServerBackup = async (backup: BackupSchedule) => {
 	try {

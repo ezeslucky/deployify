@@ -1,6 +1,6 @@
 import { createWriteStream } from "node:fs";
 import { join } from "node:path";
-import type { InferResultType } from "../types/with";
+
 import type { CreateServiceOptions } from "dockerode";
 import { uploadImage, uploadImageRemoteCommand } from "../cluster/upload";
 import {
@@ -18,6 +18,8 @@ import { buildNixpacks, getNixpacksCommand } from "./nixpacks";
 import { buildPaketo, getPaketoCommand } from "./paketo";
 import { buildRailpack, getRailpackCommand } from "./railpack";
 import { buildStatic, getStaticCommand } from "./static";
+//@ts-ignore
+import { InferResultType } from "server";
 
 // NIXPACKS codeDirectory = where is the path of the code directory
 // HEROKU codeDirectory = where is the path of the code directory
@@ -183,6 +185,7 @@ export const mechanizeDockerContainer = async (
 		Mode,
 		RollbackConfig,
 		EndpointSpec: {
+			//@ts-ignore
 			Ports: ports.map((port) => ({
 				Protocol: port.protocol,
 				TargetPort: port.targetPort,

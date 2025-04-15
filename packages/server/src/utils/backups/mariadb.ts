@@ -1,6 +1,5 @@
-import type { BackupSchedule } from "../services/backup";
-import type { Mariadb } from "../services/mariadb";
-import { findProjectById } from "../services/project";
+
+import { BackupSchedule, findProjectById, Mariadb } from "server";
 import {
 	getRemoteServiceContainer,
 	getServiceContainer,
