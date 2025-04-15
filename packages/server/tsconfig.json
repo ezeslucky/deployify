@@ -7,7 +7,7 @@
 	  "resolveJsonModule": true,
 	  "moduleDetection": "force",
 	  "isolatedModules": true,
-  
+       "jsx": "react-jsx",
 	  "strict": true,
 	  "noUncheckedIndexedAccess": true,
 	  "checkJs": true,
