@@ -26,7 +26,7 @@ export const restoreMongoBackup = async (
 			: await getServiceContainer(appName);
 
 		// For MongoDB, we need to first download the backup file since mongorestore expects a directory
-		const tempDir = "/tmp/dokploy-restore";
+		const tempDir = "/tmp/deployit-restore";
 		const fileName = backupFile.split("/").pop() || "backup.dump.gz";
 		const decompressedName = fileName.replace(".gz", "");
 
