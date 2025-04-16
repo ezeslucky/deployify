@@ -1,6 +1,6 @@
-import { db } from "../db";
-import { notifications } from "../db/schema";
-import deployitRestartEmail from "../emails/emails/deployit-restart";
+import { db } from "@deployit/server/db";
+import { notifications } from "@deployit/server/db/schema";
+import deployitRestartEmail from "@deployit/server/emails/emails/deployit-restart";
 import { renderAsync } from "@react-email/components";
 import { format } from "date-fns";
 import { eq } from "drizzle-orm";
