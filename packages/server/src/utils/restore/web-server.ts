@@ -1,7 +1,7 @@
-import type { Destination } from "../services/destination";
+import type { Destination } from "@deployit/server/services/destination";
 import { getS3Credentials } from "../backups/utils";
 import { execAsync } from "../process/execAsync";
-import { paths, IS_CLOUD } from "../constants";
+import { paths, IS_CLOUD } from "@deployit/server/constants";
 import { mkdtemp } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";

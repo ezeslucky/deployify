@@ -20,11 +20,11 @@
 	  "plugins": [{ "name": "next" }],
 	  
 	  "outDir": "./dist",
-	  "rootDir": "./src",                            // ✅ This is the fix
+	  "rootDir": "./src",                           
   
 	  "baseUrl": ".",
 	  "paths": {
-		"server": ["./src/*"]
+		"@deployit/server/*": ["./src/*"]
 	  }
 	},
 	"include": ["next-env.d.ts", "./src/**/*.ts"],

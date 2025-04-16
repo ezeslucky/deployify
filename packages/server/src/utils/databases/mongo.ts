@@ -1,4 +1,4 @@
-import type { InferResultType } from "../types/with";
+import type { InferResultType } from "@deployit/server/types/with";
 import type { CreateServiceOptions } from "dockerode";
 import {
 	calculateResources,

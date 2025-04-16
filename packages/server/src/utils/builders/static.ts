@@ -1,9 +1,11 @@
 import type { WriteStream } from "node:fs";
-
+import {
+	buildCustomDocker,
+	getDockerCommand,
+} from "@deployit/server/utils/builders/docker-file";
 import type { ApplicationNested } from ".";
 import { createFile, getCreateFileCommand } from "../docker/utils";
 import { getBuildAppDirectory } from "../filesystem/directory";
-import { buildCustomDocker, getDockerCommand } from "server";
 
 export const buildStatic = async (
 	application: ApplicationNested,

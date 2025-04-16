@@ -1,5 +1,5 @@
-import { db } from "../db";
-import { apikey, member, users_temp } from "../db/schema";
+import { db } from "@deployit/server/db";
+import { apikey, member, users_temp } from "@deployit/server/db/schema";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 import { auth } from "../lib/auth";

@@ -1,11 +1,11 @@
 import { createWriteStream } from "node:fs";
 import path, { join } from "node:path";
-import { paths } from "../constants";
-import type { Compose } from "../services/compose";
+import { paths } from "@deployit/server/constants";
+import type { Compose } from "@deployit/server/services/compose";
 import {
 	findSSHKeyById,
 	updateSSHKeyById,
-} from "../services/ssh-key";
+} from "@deployit/server/services/ssh-key";
 import { TRPCError } from "@trpc/server";
 import { recreateDirectory } from "../filesystem/directory";
 import { execAsync, execAsyncRemote } from "../process/execAsync";

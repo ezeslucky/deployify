@@ -5,7 +5,8 @@ import {
 	writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-
+import { paths } from "@deployit/server/constants";
+import type { InferResultType } from "@deployit/server/types/with";
 import boxen from "boxen";
 import {
 	writeDomainsToCompose,
@@ -18,8 +19,6 @@ import {
 } from "../docker/utils";
 import { execAsync, execAsyncRemote } from "../process/execAsync";
 import { spawnAsync } from "../process/spawnAsync";
-//@ts-ignore
-import { InferResultType, paths } from "server";
 
 export type ComposeNested = InferResultType<
 	"compose",

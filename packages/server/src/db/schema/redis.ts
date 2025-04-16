@@ -139,8 +139,3 @@ export const apiRebuildRedis = createSchema
 		redisId: true,
 	})
 	.required();
-
-
-
-
-	

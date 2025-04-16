@@ -1,4 +1,5 @@
-
+import type { BackupSchedule } from "@deployit/server/services/backup";
+import type { Destination } from "@deployit/server/services/destination";
 import { scheduleJob, scheduledJobs } from "node-schedule";
 import { keepLatestNBackups } from ".";
 import { runMariadbBackup } from "./mariadb";
@@ -6,7 +7,6 @@ import { runMongoBackup } from "./mongo";
 import { runMySqlBackup } from "./mysql";
 import { runPostgresBackup } from "./postgres";
 import { runWebServerBackup } from "./web-server";
-import { BackupSchedule, Destination } from "server";
 
 export const scheduleBackup = (backup: BackupSchedule) => {
 	const { schedule, backupId, databaseType, postgres, mysql, mongo, mariadb } =

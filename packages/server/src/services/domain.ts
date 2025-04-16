@@ -1,6 +1,6 @@
-import { db } from "../db";
-import { generateRandomDomain } from "../templates";
-import { manageDomain } from "../utils/traefik/domain";
+import { db } from "@deployit/server/db";
+import { generateRandomDomain } from "@deployit/server/templates";
+import { manageDomain } from "@deployit/server/utils/traefik/domain";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { type apiCreateDomain, domains } from "../db/schema";

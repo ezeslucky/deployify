@@ -1,5 +1,5 @@
-import { db } from "../db";
-import { gitProvider } from "../db/schema";
+import { db } from "@deployit/server/db";
+import { gitProvider } from "@deployit/server/db/schema";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 

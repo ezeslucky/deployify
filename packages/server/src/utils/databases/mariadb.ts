@@ -1,4 +1,4 @@
-
+import type { InferResultType } from "@deployit/server/types/with";
 import type { CreateServiceOptions } from "dockerode";
 import {
 	calculateResources,
@@ -8,8 +8,6 @@ import {
 	prepareEnvironmentVariables,
 } from "../docker/utils";
 import { getRemoteDocker } from "../servers/remote-docker";
-//@ts-ignore
-import { InferResultType } from "server";
 
 export type MariadbNested = InferResultType<
 	"mariadb",

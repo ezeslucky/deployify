@@ -1,10 +1,10 @@
-import { db } from "../db";
-import { type apiCreateRedirect, redirects } from "../db/schema";
+import { db } from "@deployit/server/db";
+import { type apiCreateRedirect, redirects } from "@deployit/server/db/schema";
 import {
 	createRedirectMiddleware,
 	removeRedirectMiddleware,
 	updateRedirectMiddleware,
-} from "../utils/traefik/redirect";
+} from "@deployit/server/utils/traefik/redirect";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import type { z } from "zod";

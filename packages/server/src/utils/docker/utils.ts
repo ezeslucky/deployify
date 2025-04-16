@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Readable } from "node:stream";
+import { docker, paths } from "@deployit/server/constants";
 import type { ContainerInfo, ResourceRequirements } from "dockerode";
 import { parse } from "dotenv";
 import type { ApplicationNested } from "../builders";
@@ -12,7 +13,6 @@ import type { RedisNested } from "../databases/redis";
 import { execAsync, execAsyncRemote } from "../process/execAsync";
 import { spawnAsync } from "../process/spawnAsync";
 import { getRemoteDocker } from "../servers/remote-docker";
-import { docker, paths } from "server";
 
 interface RegistryAuth {
 	username: string;
@@ -67,7 +67,7 @@ export const pullRemoteImage = async (
 			remoteDocker.pull(
 				dockerImage,
 				{ authconfig: authConfig },
-				(err: any, stream: Readable) => {
+				(err, stream) => {
 					if (err) {
 						reject(err);
 						return;
@@ -75,7 +75,7 @@ export const pullRemoteImage = async (
 
 					remoteDocker.modem.followProgress(
 						stream as Readable,
-						(err: Error | null, res: unknown) => {
+						(err: Error | null, res) => {
 							if (!err) {
 								resolve(res);
 							}
@@ -83,7 +83,7 @@ export const pullRemoteImage = async (
 								reject(err);
 							}
 						},
-						(event: any) => {
+						(event) => {
 							onData?.(event);
 						},
 					);
@@ -302,8 +302,8 @@ export const generateVolumeMounts = (mounts: ApplicationNested["mounts"]) => {
 	}
 
 	return mounts
-		.filter((mount: { type: string; }) => mount.type === "volume")
-		.map((mount: { volumeName: any; mountPath: any; }) => ({
+		.filter((mount) => mount.type === "volume")
+		.map((mount) => ({
 			Type: "volume" as const,
 			Source: mount.volumeName || "",
 			Target: mount.mountPath,
@@ -414,8 +414,8 @@ export const generateBindMounts = (mounts: ApplicationNested["mounts"]) => {
 	}
 
 	return mounts
-		.filter((mount: { type: string; }) => mount.type === "bind")
-		.map((mount: { hostPath: any; mountPath: any; }) => ({
+		.filter((mount) => mount.type === "bind")
+		.map((mount) => ({
 			Type: "bind" as const,
 			Source: mount.hostPath || "",
 			Target: mount.mountPath,
@@ -439,8 +439,8 @@ export const generateFileMounts = (
 	}
 
 	return mounts
-		.filter((mount: { type: string; }) => mount.type === "file")
-		.map((mount: { filePath: any; mountPath: any; }) => {
+		.filter((mount) => mount.type === "file")
+		.map((mount) => {
 			const fileName = mount.filePath;
 			const absoluteBasePath = path.resolve(APPLICATIONS_PATH);
 			const directory = path.join(absoluteBasePath, appName, "files");

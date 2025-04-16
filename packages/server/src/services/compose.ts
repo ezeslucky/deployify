@@ -1,50 +1,50 @@
 import { join } from "node:path";
-import { paths } from "../constants";
-import { db } from "../db";
-import { type apiCreateCompose, compose } from "../db/schema";
-import { buildAppName, cleanAppName } from "../db/schema";
+import { paths } from "@deployit/server/constants";
+import { db } from "@deployit/server/db";
+import { type apiCreateCompose, compose } from "@deployit/server/db/schema";
+import { buildAppName, cleanAppName } from "@deployit/server/db/schema";
 import {
 	buildCompose,
 	getBuildComposeCommand,
-} from "../utils/builders/compose";
-import { randomizeSpecificationFile } from "../utils/docker/compose";
+} from "@deployit/server/utils/builders/compose";
+import { randomizeSpecificationFile } from "@deployit/server/utils/docker/compose";
 import {
 	cloneCompose,
 	cloneComposeRemote,
 	loadDockerCompose,
 	loadDockerComposeRemote,
-} from "../utils/docker/domain";
-import type { ComposeSpecification } from "../utils/docker/types";
-import { sendBuildErrorNotifications } from "../utils/notifications/build-error";
-import { sendBuildSuccessNotifications } from "../utils/notifications/build-success";
+} from "@deployit/server/utils/docker/domain";
+import type { ComposeSpecification } from "@deployit/server/utils/docker/types";
+import { sendBuildErrorNotifications } from "@deployit/server/utils/notifications/build-error";
+import { sendBuildSuccessNotifications } from "@deployit/server/utils/notifications/build-success";
 import {
 	execAsync,
 	execAsyncRemote,
-} from "../utils/process/execAsync";
+} from "@deployit/server/utils/process/execAsync";
 import {
 	cloneBitbucketRepository,
 	getBitbucketCloneCommand,
-} from "../utils/providers/bitbucket";
+} from "@deployit/server/utils/providers/bitbucket";
 import {
 	cloneGitRepository,
 	getCustomGitCloneCommand,
-} from "../utils/providers/git";
+} from "@deployit/server/utils/providers/git";
 import {
 	cloneGiteaRepository,
 	getGiteaCloneCommand,
-} from "../utils/providers/gitea";
+} from "@deployit/server/utils/providers/gitea";
 import {
 	cloneGithubRepository,
 	getGithubCloneCommand,
-} from "../utils/providers/github";
+} from "@deployit/server/utils/providers/github";
 import {
 	cloneGitlabRepository,
 	getGitlabCloneCommand,
-} from "../utils/providers/gitlab";
+} from "@deployit/server/utils/providers/gitlab";
 import {
 	createComposeFile,
 	getCreateComposeFileCommand,
-} from "../utils/providers/raw";
+} from "@deployit/server/utils/providers/raw";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { encodeBase64 } from "../utils/docker/utils";

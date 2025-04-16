@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { paths } from "../constants";
-import type { User } from "../services/user";
+import { paths } from "@deployit/server/constants";
+import type { User } from "@deployit/server/services/user";
 import { dump, load } from "js-yaml";
 import {
 	loadOrCreateConfig,

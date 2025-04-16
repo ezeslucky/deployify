@@ -1,9 +1,9 @@
-import { db } from "../db";
+import { db } from "@deployit/server/db";
 import {
 	type apiCreateGitea,
 	gitProvider,
 	gitea,
-} from "../db/schema";
+} from "@deployit/server/db/schema";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 
