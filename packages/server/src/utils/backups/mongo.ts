@@ -1,5 +1,6 @@
-
-import { BackupSchedule, findProjectById, Mongo } from "server";
+import type { BackupSchedule } from "@deployit/server/services/backup";
+import type { Mongo } from "@deployit/server/services/mongo";
+import { findProjectById } from "@deployit/server/services/project";
 import {
 	getRemoteServiceContainer,
 	getServiceContainer,
@@ -8,7 +9,7 @@ import { sendDatabaseBackupNotifications } from "../notifications/database-backu
 import { execAsync, execAsyncRemote } from "../process/execAsync";
 import { getS3Credentials, normalizeS3Path } from "./utils";
 
-
+// mongodb://mongo:Bqh7AQl-PRbnBu@localhost:27017/?tls=false&directConnection=true
 export const runMongoBackup = async (mongo: Mongo, backup: BackupSchedule) => {
 	const { appName, databasePassword, databaseUser, projectId, name } = mongo;
 	const project = await findProjectById(projectId);
@@ -60,4 +61,4 @@ export const runMongoBackup = async (mongo: Mongo, backup: BackupSchedule) => {
 		throw error;
 	}
 };
-
+// mongorestore -d monguito -u mongo -p Bqh7AQl-PRbnBu --authenticationDatabase admin --gzip --archive=2024-04-13T05:03:58.937Z.dump.gz

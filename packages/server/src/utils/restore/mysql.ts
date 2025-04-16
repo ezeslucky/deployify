@@ -1,5 +1,5 @@
-import type { Destination } from "../services/destination";
-import type { MySql } from "../services/mysql";
+import type { Destination } from "@deployit/server/services/destination";
+import type { MySql } from "@deployit/server/services/mysql";
 import { getS3Credentials } from "../backups/utils";
 import {
 	getRemoteServiceContainer,

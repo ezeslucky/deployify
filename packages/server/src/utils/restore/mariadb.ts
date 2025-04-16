@@ -1,5 +1,5 @@
-import type { Destination } from "../services/destination";
-import type { Mariadb } from "../services/mariadb";
+import type { Destination } from "@deployit/server/services/destination";
+import type { Mariadb } from "@deployit/server/services/mariadb";
 import { getS3Credentials } from "../backups/utils";
 import {
 	getRemoteServiceContainer,

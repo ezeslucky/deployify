@@ -1,44 +1,44 @@
-import { docker } from "../constants";
-import { db } from "../db";
+import { docker } from "@deployit/server/constants";
+import { db } from "@deployit/server/db";
 import {
 	type apiCreateApplication,
 	applications,
 	buildAppName,
-} from "../db/schema";
-import { getAdvancedStats } from "../monitoring/utils";
+} from "@deployit/server/db/schema";
+import { getAdvancedStats } from "@deployit/server/monitoring/utils";
 import {
 	buildApplication,
 	getBuildCommand,
 	mechanizeDockerContainer,
-} from "../utils/builders";
-import { sendBuildErrorNotifications } from "../utils/notifications/build-error";
-import { sendBuildSuccessNotifications } from "../utils/notifications/build-success";
-import { execAsyncRemote } from "../utils/process/execAsync";
+} from "@deployit/server/utils/builders";
+import { sendBuildErrorNotifications } from "@deployit/server/utils/notifications/build-error";
+import { sendBuildSuccessNotifications } from "@deployit/server/utils/notifications/build-success";
+import { execAsyncRemote } from "@deployit/server/utils/process/execAsync";
 import {
 	cloneBitbucketRepository,
 	getBitbucketCloneCommand,
-} from "../utils/providers/bitbucket";
+} from "@deployit/server/utils/providers/bitbucket";
 import {
 	buildDocker,
 	buildRemoteDocker,
-} from "../utils/providers/docker";
+} from "@deployit/server/utils/providers/docker";
 import {
 	cloneGitRepository,
 	getCustomGitCloneCommand,
-} from "../utils/providers/git";
+} from "@deployit/server/utils/providers/git";
 import {
 	cloneGiteaRepository,
 	getGiteaCloneCommand,
-} from "../utils/providers/gitea";
+} from "@deployit/server/utils/providers/gitea";
 import {
 	cloneGithubRepository,
 	getGithubCloneCommand,
-} from "../utils/providers/github";
+} from "@deployit/server/utils/providers/github";
 import {
 	cloneGitlabRepository,
 	getGitlabCloneCommand,
-} from "../utils/providers/gitlab";
-import { createTraefikConfig } from "../utils/traefik/application";
+} from "@deployit/server/utils/providers/gitlab";
+import { createTraefikConfig } from "@deployit/server/utils/traefik/application";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { encodeBase64 } from "../utils/docker/utils";
@@ -152,7 +152,7 @@ export const updateApplication = async (
 
 	return application[0];
 };
- 
+
 export const updateApplicationStatus = async (
 	applicationId: string,
 	applicationStatus: Application["applicationStatus"],
@@ -439,10 +439,10 @@ export const deployPreviewApplication = async ({
 		);
 		await updateIssueComment({
 			...issueParams,
-			body: `### Deployit Preview Deployment\n\n${buildingComment}`,
+			body: `### deployit Preview Deployment\n\n${buildingComment}`,
 		});
 		application.appName = previewDeployment.appName;
-		application.env = `${application.previewEnv}\nDEPLOYIT_DEPLOY_URL=${previewDeployment?.domain?.host}`;
+		application.env = `${application.previewEnv}\ndeployit_DEPLOY_URL=${previewDeployment?.domain?.host}`;
 		application.buildArgs = application.previewBuildArgs;
 
 		if (application.sourceType === "github") {
@@ -586,7 +586,7 @@ export const deployRemotePreviewApplication = async ({
 		const comment = getIssueComment(application.name, "error", previewDomain);
 		await updateIssueComment({
 			...issueParams,
-			body: `### Deployit Preview Deployment\n\n${comment}`,
+			body: `### deployit Preview Deployment\n\n${comment}`,
 		});
 		await updateDeploymentStatus(deployment.deploymentId, "error");
 		await updatePreviewDeployment(previewDeploymentId, {
@@ -665,5 +665,3 @@ export const getApplicationStats = async (appName: string) => {
 
 	return data;
 };
-export { updatePreviewDeployment };
-

@@ -94,6 +94,7 @@ export const member = pgTable("member", {
 	role: text("role").notNull().$type<"owner" | "member" | "admin">(),
 	createdAt: timestamp("created_at").notNull(),
 	teamId: text("team_id"),
+	// Permissions
 	canCreateProjects: boolean("canCreateProjects").notNull().default(false),
 	canAccessToSSHKeys: boolean("canAccessToSSHKeys").notNull().default(false),
 	canCreateServices: boolean("canCreateServices").notNull().default(false),

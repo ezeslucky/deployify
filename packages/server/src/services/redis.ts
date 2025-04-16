@@ -1,18 +1,18 @@
-import { db } from "../db";
-import { type apiCreateRedis, redis } from "../db/schema";
-import { buildAppName } from "../db/schema";
-import { generatePassword } from "../templates";
-import { buildRedis } from "../utils/databases/redis";
-import { pullImage } from "../utils/docker/utils";
+import { db } from "@deployit/server/db";
+import { type apiCreateRedis, redis } from "@deployit/server/db/schema";
+import { buildAppName } from "@deployit/server/db/schema";
+import { generatePassword } from "@deployit/server/templates";
+import { buildRedis } from "@deployit/server/utils/databases/redis";
+import { pullImage } from "@deployit/server/utils/docker/utils";
 import { TRPCError } from "@trpc/server";
 import { eq } from "drizzle-orm";
 import { validUniqueServerAppName } from "./project";
 
-import { execAsyncRemote } from "../utils/process/execAsync";
+import { execAsyncRemote } from "@deployit/server/utils/process/execAsync";
 
 export type Redis = typeof redis.$inferSelect;
 
-
+// https://github.com/drizzle-team/drizzle-orm/discussions/1483#discussioncomment-7523881
 export const createRedis = async (input: typeof apiCreateRedis._type) => {
 	const appName = buildAppName("redis", input.appName);
 

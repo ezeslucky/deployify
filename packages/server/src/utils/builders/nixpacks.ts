@@ -1,12 +1,14 @@
 import { type WriteStream, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
-
+import {
+	buildStatic,
+	getStaticCommand,
+} from "@deployit/server/utils/builders/static";
 import { nanoid } from "nanoid";
 import type { ApplicationNested } from ".";
 import { prepareEnvironmentVariables } from "../docker/utils";
 import { getBuildAppDirectory } from "../filesystem/directory";
 import { spawnAsync } from "../process/spawnAsync";
-import { buildStatic, getStaticCommand } from "server";
 
 export const buildNixpacks = async (
 	application: ApplicationNested,

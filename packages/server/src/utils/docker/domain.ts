@@ -1,9 +1,9 @@
 import fs, { existsSync, readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { paths } from "../constants";
-import type { Compose } from "../services/compose";
-import type { Domain } from "../services/domain";
+import { paths } from "@deployit/server/constants";
+import type { Compose } from "@deployit/server/services/compose";
+import type { Domain } from "@deployit/server/services/domain";
 import { dump, load } from "js-yaml";
 import { execAsyncRemote } from "../process/execAsync";
 import {

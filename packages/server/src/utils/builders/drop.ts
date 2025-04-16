@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import path, { join } from "node:path";
-
+import { paths } from "@deployit/server/constants";
+import type { Application } from "@deployit/server/services/application";
+import { findServerById } from "@deployit/server/services/server";
 import AdmZip from "adm-zip";
 import { Client, type SFTPWrapper } from "ssh2";
 import {
@@ -8,7 +10,6 @@ import {
 	recreateDirectoryRemote,
 } from "../filesystem/directory";
 import { execAsyncRemote } from "../process/execAsync";
-import { Application, findServerById, paths } from "server";
 
 export const unzipDrop = async (zipFile: File, application: Application) => {
 	let sftp: SFTPWrapper | null = null;
