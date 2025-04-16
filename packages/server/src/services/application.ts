@@ -665,3 +665,5 @@ export const getApplicationStats = async (appName: string) => {
 
 	return data;
 };
+
+export { updatePreviewDeployment };
