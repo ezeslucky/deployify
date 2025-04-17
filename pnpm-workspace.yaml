@@ -1,5 +1,5 @@
 packages:
-  - "apps/dokploy"
+  - "apps/deployit"
   - "apps/monitoring"
   - "apps/schedules"
   - "apps/models"
