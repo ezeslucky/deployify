@@ -1,9 +1,12 @@
 {
-  "name": "schedules",
+  "name": "@deployit/schedules",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "PORT=4001 tsx watch src/index.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -11,7 +14,7 @@
   "dependencies": {
     "@hono/node-server": "^1.14.1",
     "@hono/zod-validator": "0.3.0",
-    "bullmq": "5.4.2",
+    "bullmq": "^5.49.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.39.3",
     "hono": "^4.7.6",
