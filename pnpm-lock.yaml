@@ -257,6 +257,16 @@ importers:
         specifier: ^5
         version: 5.8.2
 
+  apps/monitoring:
+    dependencies:
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+    devDependencies:
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
   apps/schedules:
     dependencies:
       '@hono/node-server':
