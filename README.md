@@ -7,7 +7,7 @@
 ## 🧩 Features
 
 - **📦 Applications**  
-  Deploy any type of application—Node.js, PHP, Python, Go, Ruby, and more.
+  Deploy any type of application—Node.js,  Go, Typescript.
 
 - **🗃️ Databases**  
   Create and manage databases with built-in support for MySQL, PostgreSQL, MongoDB, MariaDB, and Redis.
