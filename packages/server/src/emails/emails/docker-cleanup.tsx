@@ -25,6 +25,7 @@ export const DockerCleanupEmail = ({
 		<Html>
 			<Preview>{previewText}</Preview>
 			<Tailwind
+			//@ts-ignore
 				config={{
 					theme: {
 						extend: {
