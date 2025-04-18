@@ -34,6 +34,7 @@ export const InvitationEmail = ({
 			<Head />
 			<Preview>{previewText}</Preview>
 			<Tailwind
+			//@ts-ignore
 				config={{
 					theme: {
 						extend: {
