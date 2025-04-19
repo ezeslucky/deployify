@@ -43,5 +43,5 @@ jobs:
           projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
           directory: app/dist
           deploymentName: Production
-          branch: main
+          branch: mainn
           wranglerVersion: '3' 
