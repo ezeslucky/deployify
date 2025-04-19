@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Pages (Production)
 on:
   push:
     branches:
-      - mainnn
+      - mainee
 
 jobs:
   publish:
@@ -43,5 +43,5 @@ jobs:
           projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
           directory: app/dist
           deploymentName: Production
-          branch: mainn
+          branch: mainee
           wranglerVersion: '3' 
